@@ -1,0 +1,32 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://by1jndipmk50j"]
+
+[ext_resource type="Texture2D" uid="uid://cr6miscf46a0b" path="res://assets/Tiny Swords (Update 010)/Resources/Trees/Tree.png" id="1_7wo17"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wdbs8"]
+texture = ExtResource("1_7wo17")
+texture_region_size = Vector2i(64, 64)
+0:0/size_in_atlas = Vector2i(3, 3)
+0:0/animation_speed = 3.0
+0:0/animation_frame_0/duration = 0.5
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 64)
+0:0/0/z_index = 8
+0:0/0/y_sort_origin = 12
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 16, 16, 16, -16, -16, -16)
+22:2/0 = 0
+22:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 16, 16, 16, -16, -16, -16)
+15:0/size_in_atlas = Vector2i(3, 3)
+15:0/0 = 0
+15:0/0/texture_origin = Vector2i(0, 64)
+18:0/size_in_atlas = Vector2i(3, 3)
+18:0/0 = 0
+18:0/0/texture_origin = Vector2i(0, 64)
+
+[resource]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_wdbs8")
