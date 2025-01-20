@@ -1,0 +1,63 @@
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://dy0v7nlorb01j"]
+
+[ext_resource type="Texture2D" uid="uid://c0e5lcxkq4ne2" path="res://assets/Tiny Swords (Update 010)/Terrain/Water/Water.png" id="1_hpp7c"]
+[ext_resource type="Texture2D" uid="uid://dinb7dtfggv2f" path="res://assets/Tiny Swords (Update 010)/Terrain/Water/Foam/Foam.png" id="2_qosr7"]
+[ext_resource type="Texture2D" uid="uid://myxttllxvs7c" path="res://assets/Tiny Swords (Update 010)/Terrain/Water/Rocks/Rocks_01.png" id="3_1pbn4"]
+[ext_resource type="Texture2D" uid="uid://bcjw8s1ic8lma" path="res://assets/Tiny Swords (Update 010)/Terrain/Water/Rocks/Rocks_02.png" id="4_03n4q"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fecnc"]
+texture = ExtResource("1_hpp7c")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gwfie"]
+texture = ExtResource("2_qosr7")
+texture_region_size = Vector2i(64, 64)
+0:0/size_in_atlas = Vector2i(3, 3)
+0:0/animation_speed = 5.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
+0:0/animation_frame_6/duration = 1.0
+0:0/animation_frame_7/duration = 1.0
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_03er1"]
+texture = ExtResource("3_1pbn4")
+texture_region_size = Vector2i(64, 64)
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/animation_speed = 6.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
+0:0/animation_frame_6/duration = 1.0
+0:0/animation_frame_7/duration = 1.0
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2hrqs"]
+texture = ExtResource("4_03n4q")
+texture_region_size = Vector2i(64, 64)
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/animation_speed = 6.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
+0:0/animation_frame_6/duration = 1.0
+0:0/animation_frame_7/duration = 1.0
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_fecnc")
+sources/1 = SubResource("TileSetAtlasSource_gwfie")
+sources/2 = SubResource("TileSetAtlasSource_03er1")
+sources/3 = SubResource("TileSetAtlasSource_2hrqs")

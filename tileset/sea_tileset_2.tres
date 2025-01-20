@@ -1,0 +1,39 @@
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://op7c8o1lxnuv"]
+
+[ext_resource type="Texture2D" uid="uid://defxddhgegdi2" path="res://assets/Tiny Swords (Update 010)/Terrain/Water/Rocks/Rocks_03.png" id="1_xvavi"]
+[ext_resource type="Texture2D" uid="uid://4haoef1a13fo" path="res://assets/Tiny Swords (Update 010)/Terrain/Water/Rocks/Rocks_04.png" id="2_p3wjx"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h12c7"]
+texture = ExtResource("1_xvavi")
+texture_region_size = Vector2i(64, 64)
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/animation_speed = 6.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
+0:0/animation_frame_6/duration = 1.0
+0:0/animation_frame_7/duration = 1.0
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5o0he"]
+texture = ExtResource("2_p3wjx")
+texture_region_size = Vector2i(64, 64)
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/animation_speed = 6.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
+0:0/animation_frame_6/duration = 1.0
+0:0/animation_frame_7/duration = 1.0
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(128, 64)
+sources/6 = SubResource("TileSetAtlasSource_h12c7")
+sources/7 = SubResource("TileSetAtlasSource_5o0he")
