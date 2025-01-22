@@ -1,14 +1,18 @@
+class_name Player
 extends CharacterBody2D
 
 @export var speed = 80
 @onready var anim_tree = $AnimationTree
+@onready var inventory_manager = $CanvasLayer/Inventory/GridContainer
 
 var prev_input = Vector2.ZERO
 var cur_input = Vector2.ZERO
 
 var is_punching = false
+var is_opening_hud = false
 
 func _ready() -> void:
+	
 	pass
 	
 func _physics_process(delta: float) -> void:
@@ -42,4 +46,12 @@ func update_movement():
 	move_and_slide()
 
 func is_doing_action():
-	return is_punching
+	var is_doing_stuff = (
+		is_punching or 
+		is_opening_hud
+	)
+	return is_doing_stuff
+	
+func add_item_to_inventory(item:Item):
+	inventory_manager.add_item(item)
+	

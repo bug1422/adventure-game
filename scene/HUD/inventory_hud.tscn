@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dajr66n8n6stk"]
+
+[ext_resource type="Texture2D" uid="uid://cehwtmpmd77y2" path="res://assets/HUD/inventory-hud.png" id="1_1mhx4"]
+[ext_resource type="Script" path="res://scene/HUD/inventory_grid.gd" id="2_72wyp"]
+[ext_resource type="PackedScene" uid="uid://bqjr8uq7ymgv1" path="res://scene/HUD/inventory_hud_slot.tscn" id="3_qoi11"]
+
+[node name="Inventory" type="Node2D"]
+position = Vector2(480, 224)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_1mhx4")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+texture_filter = 1
+offset_left = 16.0
+offset_top = 160.0
+offset_right = 304.0
+offset_bottom = 352.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 9
+script = ExtResource("2_72wyp")
+slot_scene = ExtResource("3_qoi11")

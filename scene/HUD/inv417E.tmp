@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqjr8uq7ymgv1"]
+
+[ext_resource type="Texture2D" uid="uid://bl7avn0qy42y6" path="res://assets/HUD/inventory-hud-slot.png" id="1_a6344"]
+[ext_resource type="Script" path="res://scene/HUD/inventory_slot.gd" id="2_be3b5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_njoiq"]
+texture = ExtResource("1_a6344")
+modulate_color = Color(0.435192, 0.435192, 0.435192, 1)
+
+[node name="InventoryHudSlot" type="Panel"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+theme_override_styles/panel = SubResource("StyleBoxTexture_njoiq")
+script = ExtResource("2_be3b5")

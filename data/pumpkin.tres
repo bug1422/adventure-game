@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://fsvkubp58qsn"]
+
+[ext_resource type="Texture2D" uid="uid://dg1svw71h5uth" path="res://assets/Items/Vegetable-Fruit/Pumpkin.png" id="1_gdspt"]
+[ext_resource type="Script" path="res://script/item.gd" id="1_s2gwa"]
+
+[resource]
+script = ExtResource("1_s2gwa")
+rarity = 0
+item_name = "pumpkin"
+description = "just a pumpkin"
+item_icon = ExtResource("1_gdspt")
+stackable = true
+stack_max_count = 99
+grid_size = Vector2(1, 1)
+grid_matrix = [[1]]

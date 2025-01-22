@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://wwolwxp0udca"]
+
+[ext_resource type="Script" path="res://script/foreground_object.gd" id="1_t40e4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7i7t4"]
+size = Vector2(64, 64)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2nrk5"]
+font_size = 12
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ghso7"]
+font_size = 8
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[node name="ForegroundObject" type="Area2D"]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_t40e4")
+item_name = "pumpkin"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7i7t4")
+
+[node name="NameLabel" type="Label" parent="."]
+visible = false
+z_index = 1
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -40.0
+offset_right = 50.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "pumpkin"
+label_settings = SubResource("LabelSettings_2nrk5")
+horizontal_alignment = 1
+
+[node name="HintLabel" type="Label" parent="."]
+visible = false
+z_index = 1
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -40.0
+offset_right = 50.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "test"
+label_settings = SubResource("LabelSettings_ghso7")
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

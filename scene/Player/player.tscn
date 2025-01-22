@@ -1,8 +1,10 @@
-[gd_scene load_steps=67 format=3 uid="uid://caqvtv2nlcq34"]
+[gd_scene load_steps=69 format=3 uid="uid://caqvtv2nlcq34"]
 
 [ext_resource type="Script" path="res://scene/Player/player_script.gd" id="1_0cela"]
 [ext_resource type="SpriteFrames" uid="uid://k5f02535a4b0" path="res://assets/Player/Player.tres" id="1_qtyye"]
 [ext_resource type="Script" path="res://scene/Player/player_state_machine.gd" id="2_14ro0"]
+[ext_resource type="Script" path="res://scene/Player/player_hud_script.gd" id="4_0awec"]
+[ext_resource type="PackedScene" uid="uid://dajr66n8n6stk" path="res://scene/HUD/inventory_hud.tscn" id="4_nllvu"]
 
 [sub_resource type="Animation" id="Animation_ksruo"]
 resource_name = "RESET"
@@ -948,6 +950,8 @@ graph_offset = Vector2(-205, -98)
 [sub_resource type="CircleShape2D" id="CircleShape2D_oeww0"]
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_0cela")
 
@@ -970,3 +974,9 @@ script = ExtResource("2_14ro0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_oeww0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("4_0awec")
+
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource("4_nllvu")]
+position = Vector2(480, 179)
