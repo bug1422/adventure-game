@@ -8,7 +8,7 @@ extends GridContainer
 
 
 var cells: Array = []
-var used_cells: Array = []
+var used_cells: Dictionary = {}
 
 func _ready() -> void:
 	for y in range(0,height_size):
@@ -30,11 +30,15 @@ func add_item(item: Item):
 		print("not enough room")
 
 func check_available(item:Item):
+	var existed_cell = used_cells.get(item.get_id())
+	if existed_cell:
+		(existed_cell[0] as InventorySlot).add_stack(1)
+		return existed_cell[0]
 	for y in range(0,height_size-item.grid_size.y):
 		for x in range(0,width_size-item.grid_size.x):
 			var linked_cell = apply_item(item.grid_matrix,Vector2(x,y),item.grid_size)
 			if linked_cell != null:
-				used_cells.append([item,linked_cell])
+				used_cells[item.get_id()] = linked_cell.duplicate()
 				var host: InventorySlot = linked_cell.pop_front() 
 				host.add_item(item)
 				var l = len(linked_cell)

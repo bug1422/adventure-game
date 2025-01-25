@@ -3,6 +3,7 @@ class_name InventorySlot
 extends Control
 
 @onready var color_rect = $ColorRect
+@onready var quantity_rect = $QuantityRect
 @onready var texture_rect = $TextureRect
 
 @export var is_empty: bool = true:
@@ -18,12 +19,26 @@ extends Control
 		is_hovering = value
 		highlight()
 
+
+
 var item: Item
 var host_cell: InventorySlot
 var related_cell: Array = []
-
+var quantity: int = 0:
+	get:
+		return quantity
+	set(value):
+		quantity = value
+		if quantity_rect:
+			quantity_rect.text = "%d" % quantity
+			if quantity == 0:
+				quantity_rect.visible = false
+			else:
+				quantity_rect.visible = true
+				
 func _ready() -> void:
-	$ColorRect.visible = false
+	color_rect.visible = false
+	quantity_rect.visible = false
 
 func _on_mouse_entered() -> void:
 	is_hovering = true
@@ -33,8 +48,11 @@ func _on_mouse_exited() -> void:
 
 func add_item(item:Item):
 	self.item = item 
-	texture_rect.size = item.grid_size
+	self.quantity = 1
 	texture_rect.texture = item.item_icon
+
+func add_stack(amount: int):
+	self.quantity += amount
 
 func add_related_cell(host,arr):
 	self.related_cell = arr

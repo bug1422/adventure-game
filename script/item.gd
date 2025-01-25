@@ -98,3 +98,9 @@ func rarity_to_string(rarity_enum: RARITY) -> String:
 			return "EXOTIC"
 		_:
 			return "UNKNOWN"
+
+func get_id():
+	if stackable:
+		return item_name
+	else:
+		return id

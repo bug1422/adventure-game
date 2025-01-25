@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqjr8uq7ymgv1"]
+[gd_scene load_steps=3 format=3 uid="uid://bqjr8uq7ymgv1"]
 
 [ext_resource type="Script" path="res://scene/HUD/inventory_slot.gd" id="2_be3b5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4xu17"]
+font_size = 13
 
 [node name="Panel" type="Control"]
 texture_filter = 1
@@ -11,23 +14,51 @@ mouse_default_cursor_shape = 2
 script = ExtResource("2_be3b5")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 z_index = 1
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.341176)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 expand_mode = 3
+
+[node name="QuantityRect" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "1"
+label_settings = SubResource("LabelSettings_4xu17")
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
