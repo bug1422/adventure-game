@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://df2ik8j1yuvsu"]
+
+[ext_resource type="Script" path="res://scene/HUD/item_holder.gd" id="1_kmxy0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4xu17"]
+font_size = 13
+
+[node name="TextureRect" type="TextureRect"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 3
+script = ExtResource("1_kmxy0")
+
+[node name="QuantityRect" type="Label" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "1"
+label_settings = SubResource("LabelSettings_4xu17")
+horizontal_alignment = 2
+vertical_alignment = 2

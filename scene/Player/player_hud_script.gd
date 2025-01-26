@@ -2,6 +2,8 @@ extends CanvasLayer
 
 var parent: Player
 
+var inventory_dict : Dictionary = {}
+
 func _ready() -> void:
 	$Inventory.visible = false
 	parent = get_parent()

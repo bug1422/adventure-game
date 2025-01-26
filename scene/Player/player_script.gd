@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @export var speed = 80
 @onready var anim_tree = $AnimationTree
-@onready var inventory_manager = $CanvasLayer/Inventory/GridContainer
+@onready var inventory_manager:InventoryHUD = $CanvasLayer/Inventory
 
 var prev_input = Vector2.ZERO
 var cur_input = Vector2.ZERO
@@ -53,5 +53,7 @@ func is_doing_action():
 	return is_doing_stuff
 	
 func add_item_to_inventory(item:Item):
-	inventory_manager.add_item(item)
+	inventory_manager.add_item(OtherGlobalScript.create_item_holder(item))
 	
+func get_inventory():
+	return inventory_manager.get_inventory()

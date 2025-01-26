@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgn6giv72mris"]
+[gd_scene load_steps=8 format=3 uid="uid://dgn6giv72mris"]
 
 [ext_resource type="Script" path="res://script/station_object.gd" id="1_vjhq0"]
 [ext_resource type="Texture2D" uid="uid://dlo35mpelsq1k" path="res://assets/Tiny Swords (Update 010)/Deco/19.png" id="2_cy84a"]
+[ext_resource type="PackedScene" uid="uid://c4qitpeitqsxq" path="res://scene/HUD/Object/campfire_hud.tscn" id="3_4v3yq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7i7t4"]
 size = Vector2(128, 128)
@@ -19,11 +20,12 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pj214"]
 size = Vector2(98, 40)
 
-[node name="Campfire" type="Area2D"]
+[node name="Campfire" type="Area2D" node_paths=PackedStringArray("hud")]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_vjhq0")
+hud = NodePath("CanvasLayer/CampfireHud")
 item_name = "campfire"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -77,6 +79,13 @@ horizontal_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_pj214")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CampfireHud" parent="CanvasLayer" instance=ExtResource("3_4v3yq")]
+visible = false
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

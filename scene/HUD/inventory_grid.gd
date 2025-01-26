@@ -1,51 +1,76 @@
-
-extends GridContainer
-
-@export var slot_scene: PackedScene
+extends Control
+class_name  InventoryHUD
+@onready var grid_container = $GridContainer
+@onready var holding_item_icon: TextureRect = $HoldingItemIcon
+@export var slot_scene: PackedScene = preload("res://scene/HUD/inventory_hud_slot.tscn")
 
 @export var width_size: int = 9
 @export var height_size: int = 6
 
+var holding_item: ItemHolder
 
 var cells: Array = []
-var used_cells: Dictionary = {}
+var item_holders: Array[ItemHolder] = []
 
 func _ready() -> void:
 	for y in range(0,height_size):
 		var row = []
 		for x in range(0,width_size):
 			var slot = slot_scene.instantiate() 
-			add_child(slot)
+			grid_container.add_child(slot)
+			slot.gui_input.connect(slot_gui_input.bind(slot))
 			row.append(slot)
 		cells.append(row)
 		print(len(row))
 	pass
-	
-	
-func add_item(item: Item):
-	var position = check_available(item)
-	if position != null:
-		caculate_middle_pos(position,item.grid_size)
-	else:
-		print("not enough room")
 
-func check_available(item:Item):
-	var existed_cell = used_cells.get(item.get_id())
-	if existed_cell:
-		(existed_cell[0] as InventorySlot).add_stack(1)
-		return existed_cell[0]
+
+
+func slot_gui_input(event: InputEvent, slot: InventorySlot):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
+			if holding_item != null:
+				if !slot.item:
+					slot.add_item(holding_item)
+					holding_item =  null
+					holding_item_icon.texture = null
+				else:
+					var tempt_item = slot.item
+					slot.clear_cell()
+					holding_item_icon.texture = tempt_item.item_icon
+					holding_item_icon.global_position = event.global_position
+					slot.add_item(holding_item)
+					holding_item = tempt_item 
+			elif slot.item:
+				holding_item = slot.item
+				slot.clear_cell()
+				holding_item_icon.texture = holding_item.item_icon
+				holding_item_icon.global_position = get_global_mouse_position()
+
+func _process(delta: float) -> void:
+	if holding_item:
+		holding_item_icon.global_position = get_global_mouse_position()
+
+func add_item(holder: ItemHolder):
+	var existed_item = item_holders.filter(func(x:ItemHolder): return x.check_item(holder.item))
+	if existed_item:
+		existed_item.front().add_stack(holder.item)
+		return
+		
+	var cell = check_available(holder.item)
+	if cell != null:
+		cell.add_item_holder(holder)
+		item_holders.append(holder)
+
+func check_available(item:Item) -> InventorySlot:
+	
 	for y in range(0,height_size-item.grid_size.y):
 		for x in range(0,width_size-item.grid_size.x):
 			var linked_cell = apply_item(item.grid_matrix,Vector2(x,y),item.grid_size)
-			if linked_cell != null:
-				used_cells[item.get_id()] = linked_cell.duplicate()
-				var host: InventorySlot = linked_cell.pop_front() 
-				host.add_item(item)
-				var l = len(linked_cell)
-				for i in range(0,l):
-					linked_cell.slice()
-					(linked_cell[i] as InventorySlot).add_related_cell(host,linked_cell.slice(0,i) + linked_cell.slice(i+1,l))
-				return Vector2(x,y)
+			if linked_cell != null or linked_cell != []:
+				for cell in linked_cell:
+					cell.add_related_cell(linked_cell.duplicate())
+				return linked_cell[0]
 	return null
 
 func apply_item(matrix,cell_pos:Vector2,matrix_size:Vector2,matrix_pos:Vector2=Vector2.ZERO,linked_cell:Array=[]):
@@ -66,5 +91,5 @@ func apply_item(matrix,cell_pos:Vector2,matrix_size:Vector2,matrix_pos:Vector2=V
 	else:
 		return []
 
-func caculate_middle_pos(pos,matrix_size):
-	pass
+func get_inventory():
+	return cells

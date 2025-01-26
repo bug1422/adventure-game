@@ -979,4 +979,6 @@ shape = SubResource("CircleShape2D_oeww0")
 script = ExtResource("4_0awec")
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("4_nllvu")]
-position = Vector2(480, 179)
+visible = false
+offset_top = 179.0
+offset_bottom = 179.0

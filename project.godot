@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 JsonDataScript="*res://script/global/JSON_data_script.gd"
+OtherGlobalScript="*res://script/global/other_global_script.gd"
 
 [display]
 

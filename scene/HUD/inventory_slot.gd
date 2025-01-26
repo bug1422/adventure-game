@@ -3,7 +3,6 @@ class_name InventorySlot
 extends Control
 
 @onready var color_rect = $ColorRect
-@onready var quantity_rect = $QuantityRect
 @onready var texture_rect = $TextureRect
 
 @export var is_empty: bool = true:
@@ -18,52 +17,40 @@ extends Control
 	set(value):
 		is_hovering = value
 		highlight()
-
-
-
-var item: Item
+		
 var host_cell: InventorySlot
-var related_cell: Array = []
-var quantity: int = 0:
-	get:
-		return quantity
-	set(value):
-		quantity = value
-		if quantity_rect:
-			quantity_rect.text = "%d" % quantity
-			if quantity == 0:
-				quantity_rect.visible = false
-			else:
-				quantity_rect.visible = true
-				
+var linked_cell: Array = []
+var head_cell: InventorySlot
+
 func _ready() -> void:
 	color_rect.visible = false
-	quantity_rect.visible = false
+
+func highlight():
+	$ColorRect.visible = is_hovering
+
+func clear_cell():
+	host_cell = null
+	linked_cell = []
+	is_empty = true
+
 
 func _on_mouse_entered() -> void:
 	is_hovering = true
+	toggle_hover_on_linked_cell(true)
 
 func _on_mouse_exited() -> void:
 	is_hovering = false
+	toggle_hover_on_linked_cell(false)
 
-func add_item(item:Item):
-	self.item = item 
-	self.quantity = 1
-	texture_rect.texture = item.item_icon
+func toggle_hover_on_linked_cell(value:bool):
+	if head_cell:
+		head_cell.is_hovering = value
+	for cell in linked_cell:
+		cell.is_hovering = value
 
-func add_stack(amount: int):
-	self.quantity += amount
-
-func add_related_cell(host,arr):
-	self.related_cell = arr
-	self.host_cell = host
+func add_related_cell(linked_cell: Array):
+	self.head_cell = linked_cell.pop_front()
+	self.linked_cell = linked_cell
 	
-func highlight():
-	if is_hovering:
-		$ColorRect.visible = true
-	else:
-		$ColorRect.visible = false
-	for cell in related_cell:
-		cell.is_hovering = is_hovering
-	if host_cell and self != host_cell:
-		host_cell.is_hovering = is_hovering
+func add_item_holder(holder:ItemHolder):
+	add_child(holder)

@@ -9,6 +9,7 @@ enum RARITY {
 }
 
 var id: int
+var quantity: int
 @export var rarity: RARITY
 @export var item_name: String
 @export var description: String

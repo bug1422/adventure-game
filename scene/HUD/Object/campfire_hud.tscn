@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4qitpeitqsxq"]
+
+[ext_resource type="Script" path="res://scene/HUD/Object/campfire_hud.gd" id="1_38agu"]
+[ext_resource type="Texture2D" uid="uid://032u8daabcgf" path="res://assets/HUD/campfire-hud.png" id="2_mrwqi"]
+[ext_resource type="PackedScene" uid="uid://bqjr8uq7ymgv1" path="res://scene/HUD/inventory_hud_slot.tscn" id="3_wq6et"]
+
+[node name="Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_38agu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -80.0
+offset_right = 64.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mrwqi")
+
+[node name="Food" parent="." instance=ExtResource("3_wq6et")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -165.0
+offset_right = 16.0
+offset_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fuel" parent="." instance=ExtResource("3_wq6et")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -69.0
+offset_right = 16.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.0
+offset_top = -20.0
+offset_right = 145.0
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 9
