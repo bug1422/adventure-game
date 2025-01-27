@@ -954,6 +954,7 @@ collision_layer = 4
 collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_0cela")
+speed = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_qtyye")

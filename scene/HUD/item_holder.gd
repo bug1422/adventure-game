@@ -1,6 +1,7 @@
-extends TextureRect
+extends InventorySlot
 class_name ItemHolder
 
+@onready var texture_rect = $TextureRect
 var item: Item:
 	get:
 		return item
@@ -8,11 +9,10 @@ var item: Item:
 		item = value
 		if item == null:
 			quantity = 0
-			texture = null
+			$TextureRect.texture = null
 		else:
 			quantity = item.quantity
-			holder_matrix = item.grid_matrix
-			texture = item.item_icon
+			$TextureRect.texture = item.item_icon
 
 var quantity: int = 0:
 	get:
@@ -26,25 +26,19 @@ var quantity: int = 0:
 			else:
 				$QuantityRect.visible = true
 
-var relative_cell: Array[Vector2] = []
-
-var start_cell: Vector2 = Vector2(-1,-1):
+var is_holding: bool = false:
 	get:
-		return start_cell
+		return is_holding
 	set(value):
-		start_cell = value
-		if holder_matrix and value.x >= 0 and value.y >= 0:
-			relative_cell = []
-			for y in range(0,len(holder_matrix)):
-				for x in range(0,len(holder_matrix[y])):
-					if holder_matrix[y][x] == 1:
-						relative_cell.append(Vector2(x,y)+start_cell)
-
-@export var holder_matrix: Array = [[1]]
-
+		is_holding = value
+		highlight()
+		
 func check_item(item:Item):
 	return self.item.get_id() == item.get_id()
 	
 func add_stack(item:Item):
 	self.item.quantity += item.quantity
 	self.quantity = self.item.quantity
+
+func highlight():
+	$ColorRect.visible = is_hovering && !is_holding

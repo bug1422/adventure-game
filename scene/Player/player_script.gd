@@ -53,7 +53,7 @@ func is_doing_action():
 	return is_doing_stuff
 	
 func add_item_to_inventory(item:Item):
-	inventory_manager.add_item(OtherGlobalScript.create_item_holder(item))
+	inventory_manager.add_item(item)
 	
 func get_inventory():
 	return inventory_manager.get_inventory()
