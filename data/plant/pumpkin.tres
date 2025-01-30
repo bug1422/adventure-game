@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Plant" load_steps=6 format=3 uid="uid://cmfd4otdh3cxe"]
+
+[ext_resource type="Resource" uid="uid://fsvkubp58qsn" path="res://data/item/pumpkin.tres" id="1_07wdh"]
+[ext_resource type="Script" path="res://script/plant.gd" id="1_q84ax"]
+[ext_resource type="Script" path="res://script/dropped_item.gd" id="2_cjoys"]
+[ext_resource type="Texture2D" uid="uid://bniuhrxu5vhn4" path="res://assets/Tiny Swords (Update 010)/Deco/13.png" id="2_re6je"]
+
+[sub_resource type="Resource" id="Resource_57m8l"]
+script = ExtResource("2_cjoys")
+item = ExtResource("1_07wdh")
+amount = 1
+
+[resource]
+script = ExtResource("1_q84ax")
+plant_name = "pumpkin"
+stages = Array[int]([5, 0])
+regrowable = true
+regrow_stage = 0
+sprite = ExtResource("2_re6je")
+sprite_hframes = 2
+sprite_vframes = 1
+dropped_item = SubResource("Resource_57m8l")

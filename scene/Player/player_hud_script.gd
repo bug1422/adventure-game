@@ -1,7 +1,5 @@
 extends CanvasLayer
-
 var parent: Player
-
 var inventory_dict : Dictionary = {}
 
 func _ready() -> void:
@@ -11,6 +9,7 @@ func _ready() -> void:
 		print("no variable")
 	else:
 		print("HUD ready")
+
 		
 
 

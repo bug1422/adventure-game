@@ -6,7 +6,7 @@ extends ForegroundObject
 		return is_player_in_range
 	set(value):
 		is_player_in_range = value
-		hint_label.visible = is_player_in_range
+		update_hint()
 var player: Player = null
 
 func _on_body_entered(body: Node2D) -> void:
@@ -19,3 +19,6 @@ func _on_body_exited(body: Node2D) -> void:
 	if body is Player:
 		is_player_in_range = false
 		player = null
+
+func update_hint():
+	hint_label.visible = is_player_in_range

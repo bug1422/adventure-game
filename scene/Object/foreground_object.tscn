@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://wwolwxp0udca"]
+[gd_scene load_steps=6 format=3 uid="uid://wwolwxp0udca"]
 
-[ext_resource type="Script" path="res://script/foreground_object.gd" id="1_t40e4"]
+[ext_resource type="Script" path="res://script/plant_object.gd" id="1_8iluh"]
+[ext_resource type="Resource" uid="uid://cmfd4otdh3cxe" path="res://data/plant/pumpkin.tres" id="2_m02ar"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7i7t4"]
 size = Vector2(64, 64)
@@ -15,12 +16,12 @@ font_size = 8
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
-[node name="ForegroundObject" type="Area2D"]
+[node name="PlantObject" type="Area2D"]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 4
-script = ExtResource("1_t40e4")
-item_name = "pumpkin"
+script = ExtResource("1_8iluh")
+plant_data = ExtResource("2_m02ar")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 hframes = 2
@@ -65,6 +66,8 @@ grow_vertical = 2
 text = "test"
 label_settings = SubResource("LabelSettings_ghso7")
 horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

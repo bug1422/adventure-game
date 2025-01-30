@@ -1,8 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5x3h33wg35pc"]
+[gd_scene load_steps=5 format=3 uid="uid://d3u3b8800s3qr"]
 
-[ext_resource type="Script" path="res://script/plant_object.gd" id="1_45b4c"]
-[ext_resource type="Resource" uid="uid://cmfd4otdh3cxe" path="res://data/plant/pumpkin.tres" id="2_lhbni"]
-[ext_resource type="Texture2D" uid="uid://bniuhrxu5vhn4" path="res://assets/Tiny Swords (Update 010)/Deco/13.png" id="2_tssd2"]
+[ext_resource type="Script" path="res://script/foreground_object.gd" id="1_cil1d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7i7t4"]
 size = Vector2(64, 64)
@@ -12,7 +10,7 @@ font_size = 12
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_xfwxi"]
+[sub_resource type="LabelSettings" id="LabelSettings_ghso7"]
 font_size = 8
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
@@ -21,17 +19,11 @@ outline_color = Color(0, 0, 0, 1)
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 4
-script = ExtResource("1_45b4c")
-plant_data = ExtResource("2_lhbni")
+script = ExtResource("1_cil1d")
 item_name = "pumpkin"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-y_sort_enabled = true
-position = Vector2(0, 16)
-texture = ExtResource("2_tssd2")
-offset = Vector2(0, -15)
 hframes = 2
-frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7i7t4")
@@ -65,13 +57,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -48.0
-offset_top = -24.0
+offset_top = -40.0
 offset_right = 50.0
-offset_bottom = -1.0
+offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "<Right click>"
-label_settings = SubResource("LabelSettings_xfwxi")
+text = "test"
+label_settings = SubResource("LabelSettings_ghso7")
 horizontal_alignment = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

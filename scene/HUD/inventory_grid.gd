@@ -14,6 +14,7 @@ var holding_item: ItemHolder
 var slots: Array = []
 var inventory_matrix: Array = []
 var item_holders: Dictionary = {}
+@export var onloadout_items: Array[DroppedItem] = []
 
 func _ready() -> void:
 	for y in range(0,height_size):
@@ -27,7 +28,10 @@ func _ready() -> void:
 			inv_row.append(0)
 		slots.append(slot_row)
 		inventory_matrix.append(inv_row)
-	pass
+	for dropped in onloadout_items:
+		var item:Item = dropped.item.duplicate()
+		item.quantity = dropped.amount
+		add_item(item)
 
 
 
@@ -86,9 +90,9 @@ func check_available_cell(x:int,y:int,item:Item):
 	var x_iter = 0
 	var y_iter = 0 
 	while cell == 0:
-		var item_cell = item.grid_matrix[y+y_iter][x+x_iter]
+		var item_cell = item.grid_matrix[y_iter][x_iter]
 		if item_cell == 1:
-			cell = inventory_matrix[y_iter][x_iter]
+			cell = inventory_matrix[y+y_iter][x+x_iter]
 		elif item_cell == 0:
 			cell = 0
 		x_iter += 1

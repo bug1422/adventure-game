@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Plant" load_steps=6 format=3 uid="uid://dxo4qxcqqd3et"]
+
+[ext_resource type="Resource" uid="uid://bb0g7gpyfx4uu" path="res://data/item/potato.tres" id="1_bdrpb"]
+[ext_resource type="Script" path="res://script/plant.gd" id="1_lqi4k"]
+[ext_resource type="Texture2D" uid="uid://b1dcujest5a55" path="res://assets/Tiny Swords (Update 010)/Deco/20.png" id="2_bb6cb"]
+[ext_resource type="Script" path="res://script/dropped_item.gd" id="2_ljsu2"]
+
+[sub_resource type="Resource" id="Resource_jkd2c"]
+script = ExtResource("2_ljsu2")
+item = ExtResource("1_bdrpb")
+amount = 5
+
+[resource]
+script = ExtResource("1_lqi4k")
+plant_name = "potato"
+stages = Array[int]([3, 3, 3, 3, 0])
+regrowable = false
+regrow_stage = 0
+sprite = ExtResource("2_bb6cb")
+sprite_hframes = 5
+sprite_vframes = 1
+dropped_item = SubResource("Resource_jkd2c")

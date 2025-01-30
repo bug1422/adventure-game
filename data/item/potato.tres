@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bb0g7gpyfx4uu"]
+
+[ext_resource type="Script" path="res://script/item.gd" id="1_7xljx"]
+[ext_resource type="Texture2D" uid="uid://b0gkaoerjlk0e" path="res://assets/Items/Vegetable-Fruit/Potato.png" id="1_tatrn"]
+
+[resource]
+script = ExtResource("1_7xljx")
+rarity = 0
+item_name = "potato"
+description = "a potato"
+item_icon = ExtResource("1_tatrn")
+stackable = true
+stack_max_count = 64
+grid_size = Vector2(1, 1)
+grid_matrix = [[1]]

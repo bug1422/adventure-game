@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://cw1hw4hl8s1bc"]
+[gd_scene load_steps=22 format=4 uid="uid://cw1hw4hl8s1bc"]
 
 [ext_resource type="TileSet" uid="uid://c1n5ubxdybgfh" path="res://tileset/ground_tileset.tres" id="1_0uvtb"]
 [ext_resource type="TileSet" uid="uid://1k6njbo8vg67" path="res://tileset/elevation_tileset.tres" id="2_3o0d4"]
@@ -10,6 +10,7 @@
 [ext_resource type="TileSet" uid="uid://by1jndipmk50j" path="res://tileset/tree_tileset.tres" id="5_sqfgy"]
 [ext_resource type="PackedScene" uid="uid://b5x3h33wg35pc" path="res://scene/Object/Fruit/pumpkin_1.tscn" id="7_nmrsr"]
 [ext_resource type="PackedScene" uid="uid://dgn6giv72mris" path="res://scene/Object/Campfire/campfire.tscn" id="8_0vmcc"]
+[ext_resource type="PackedScene" uid="uid://rp65pn5opnfu" path="res://scene/Object/Vegetable/potato.tscn" id="9_djgy3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iy5pe"]
 size = Vector2(186, 13)
@@ -152,6 +153,9 @@ position = Vector2(1760, 312)
 
 [node name="Campfire" parent="Map/First Floor/Objects" instance=ExtResource("8_0vmcc")]
 position = Vector2(1376, 224)
+
+[node name="Potato" parent="Map/First Floor/Objects" instance=ExtResource("9_djgy3")]
+position = Vector2(1568, 32)
 
 [node name="Sea Floor" type="Node2D" parent="Map"]
 y_sort_enabled = true

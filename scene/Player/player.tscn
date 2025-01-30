@@ -1,10 +1,13 @@
-[gd_scene load_steps=69 format=3 uid="uid://caqvtv2nlcq34"]
+[gd_scene load_steps=74 format=3 uid="uid://caqvtv2nlcq34"]
 
 [ext_resource type="Script" path="res://scene/Player/player_script.gd" id="1_0cela"]
 [ext_resource type="SpriteFrames" uid="uid://k5f02535a4b0" path="res://assets/Player/Player.tres" id="1_qtyye"]
 [ext_resource type="Script" path="res://scene/Player/player_state_machine.gd" id="2_14ro0"]
 [ext_resource type="Script" path="res://scene/Player/player_hud_script.gd" id="4_0awec"]
 [ext_resource type="PackedScene" uid="uid://dajr66n8n6stk" path="res://scene/HUD/inventory_hud.tscn" id="4_nllvu"]
+[ext_resource type="Script" path="res://script/dropped_item.gd" id="5_5kmjy"]
+[ext_resource type="Resource" uid="uid://fsvkubp58qsn" path="res://data/item/pumpkin.tres" id="6_keo8d"]
+[ext_resource type="Resource" uid="uid://bb0g7gpyfx4uu" path="res://data/item/potato.tres" id="7_8vbko"]
 
 [sub_resource type="Animation" id="Animation_ksruo"]
 resource_name = "RESET"
@@ -949,6 +952,16 @@ graph_offset = Vector2(-205, -98)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oeww0"]
 
+[sub_resource type="Resource" id="Resource_yh7il"]
+script = ExtResource("5_5kmjy")
+item = ExtResource("7_8vbko")
+amount = 5
+
+[sub_resource type="Resource" id="Resource_jt4yo"]
+script = ExtResource("5_5kmjy")
+item = ExtResource("6_keo8d")
+amount = 5
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 4
@@ -983,3 +996,4 @@ script = ExtResource("4_0awec")
 visible = false
 offset_top = 179.0
 offset_bottom = 179.0
+onloadout_items = Array[ExtResource("5_5kmjy")]([SubResource("Resource_yh7il"), SubResource("Resource_jt4yo")])
